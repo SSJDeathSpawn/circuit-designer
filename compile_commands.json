@@ -1,0 +1,152 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I",
+      "include",
+      "-c",
+      "-o",
+      "src/glad.o",
+      "src/glad.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer/lib/glad",
+    "file": "/files/Programming/Projects/circuit-designer/lib/glad/src/glad.c",
+    "output": "/files/Programming/Projects/circuit-designer/lib/glad/src/glad.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/graphics/renderer.o",
+      "src/graphics/renderer.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/graphics/renderer.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/graphics/renderer.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/graphics/scene_obj.o",
+      "src/graphics/scene_obj.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/graphics/scene_obj.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/graphics/scene_obj.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/primitives/shader.o",
+      "src/primitives/shader.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/primitives/shader.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/primitives/shader.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/primitives/vao.o",
+      "src/primitives/vao.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/primitives/vao.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/primitives/vao.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/primitives/vbo.o",
+      "src/primitives/vbo.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/primitives/vbo.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/primitives/vbo.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/utils/basic.o",
+      "src/utils/basic.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/utils/basic.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/utils/basic.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/utils/error_handling.o",
+      "src/utils/error_handling.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/utils/error_handling.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/utils/error_handling.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-Wall",
+      "-I",
+      "lib/glfw/include",
+      "-I",
+      "lib/glad/include",
+      "-o",
+      "src/main.o",
+      "src/main.c"
+    ],
+    "directory": "/files/Programming/Projects/circuit-designer",
+    "file": "/files/Programming/Projects/circuit-designer/src/main.c",
+    "output": "/files/Programming/Projects/circuit-designer/src/main.o"
+  }
+]
