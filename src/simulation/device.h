@@ -36,5 +36,6 @@ Gate newGate(bool isInput);
 DeviceIO newIO(unsigned short int noGates, bool isInput, char labels[]);
 Device newDevice(char* name, DeviceIO input, DeviceIO output, TruthTable function[]);
 bool verifyIOTableNumbers(DeviceIO input, DeviceIO output, TruthTable* function);
+void runDevice(Device* device);
 
 #endif // !DEVICE_H

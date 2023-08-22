@@ -62,3 +62,16 @@ bool verifyIOTableNumbers(DeviceIO input, DeviceIO output, TruthTable* function)
   }
   return true;
 }
+
+void runDevice(Device *device) {
+
+  int sum = 0;
+  for(int i=0; i < device->deviceInput.noGates;i++) {
+    sum = sum << 1;
+    sum |= (device->deviceInput.gates[i].isActive)? 1 : 0;
+  }
+
+  for(int i=0; i < device->deviceOuput.noGates;i++) {
+    device->deviceOuput.gates[i].isActive = device->function[i].outputs[sum];
+  }
+}

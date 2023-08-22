@@ -34,6 +34,16 @@ $(OBJS): $(@:.o=.c)
 run: all
 	$(BIN)/app
 
+# Test suite
+
+testgate:
+	$(CC) -o $(BIN)/test src/tests/simple_gates.c src/simulation/device.c -lm
+	$(BIN)/test
+	rm $(BIN)/test
+
+
+test: testgate
+
 # recipe to clean the workspace
 clean:
 	rm -f $(OBJS)
