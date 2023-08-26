@@ -1,7 +1,7 @@
 #include "device.h"
 
 TruthTable newTable(bool outputs[], int n) {
-  
+
   TruthTable table = {
     .outputs = malloc(sizeof(bool)*n), 
     .noOutputs = n
@@ -47,7 +47,7 @@ Device newDevice(char* name, DeviceIO input, DeviceIO output, TruthTable* functi
     .name = (char*) malloc(sizeof(char)*len), 
     .function = (TruthTable*) malloc(sizeof(TruthTable)*output.noGates), 
     .deviceInput = input, 
-    .deviceOuput = output
+    .deviceOutput = output
   };
   
   for(int i=0;i<len;i++) new.name[i] = name[i];
@@ -71,7 +71,7 @@ void runDevice(Device *device) {
     sum |= (device->deviceInput.gates[i].isActive)? 1 : 0;
   }
 
-  for(int i=0; i < device->deviceOuput.noGates;i++) {
-    device->deviceOuput.gates[i].isActive = device->function[i].outputs[sum];
+  for(int i=0; i < device->deviceOutput.noGates;i++) {
+    device->deviceOutput.gates[i].isActive = device->function[i].outputs[sum];
   }
 }

@@ -24,7 +24,7 @@ typedef struct TruthTable {
 typedef struct Device {
   char* name;
   DeviceIO deviceInput;
-  DeviceIO deviceOuput;
+  DeviceIO deviceOutput;
   TruthTable* function;
 } Device;
 
