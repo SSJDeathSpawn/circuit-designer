@@ -37,12 +37,16 @@ run: all
 # Test suite
 
 testgate:
-	$(CC) -o $(BIN)/test src/tests/simple_gates.c src/simulation/device.c -lm
-	$(BIN)/test
-	rm $(BIN)/test
+	$(CC) -o $(BIN)/testgate src/tests/simple_gates.c src/simulation/device.c src/tests/gate_consts.c -lm
+	$(BIN)/testgate
+	rm $(BIN)/testgate
 
+testcircuit:
+	$(CC) -o $(BIN)/testcircuit src/tests/simple_circuit.c src/simulation/device.c src/simulation/circuit.c src/tests/gate_consts.c -lm
+	$(BIN)/testcircuit
+	rm $(BIN)/testcircuit
 
-test: testgate
+test: testgate testcircuit
 
 # recipe to clean the workspace
 clean:

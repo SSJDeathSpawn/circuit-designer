@@ -1,4 +1,5 @@
 #include "circuit.h"
+#include <string.h>
 
 bool ifExists(SimList* head, SimObjectType type, SimObject obj) {
   SimList* ptr = head;
@@ -6,7 +7,7 @@ bool ifExists(SimList* head, SimObjectType type, SimObject obj) {
     if(ptr->type == type) {
       if(
         (type == DEVICE && obj.dev == ptr->obj.dev) || 
-        (type == CONNECTION && dev.conn == ptr->obj.conn)
+        (type == CONNECTION && obj.conn == ptr->obj.conn)
       ) 
         return true; 
     }
@@ -27,11 +28,12 @@ void removeAppendSimList(SimList **head, SimObjectType type, SimObject obj) {
       if (ptr->type == type) {
         if(
           (type == DEVICE && obj.dev == ptr->obj.dev) || 
-          (type == CONNECTION && dev.conn == ptr->obj.conn)
-        )
-        SimList* temp = ptr->next;
-        ptr->next = ptr->next->next;
-        free(temp);
+          (type == CONNECTION && obj.conn == ptr->obj.conn)
+        ) {
+          SimList* temp = ptr->next;
+          ptr->next = ptr->next->next;
+          free(temp);
+        }
       }
       ptr = ptr->next;
     }
@@ -136,4 +138,44 @@ Circuit newCircuit(Gate inputGates[], char inputLabels[], int inputs, Board boar
   }
 
   return circuit;
+}
+
+void simulateCircuit(Circuit* circuit) {
+  SimList* ptr = circuit->listHead;
+  while(ptr != NULL) {
+    if (ptr->type == CONNECTION) {
+      ptr->obj.conn->to->isActive = ptr->obj.conn->from->isActive;
+    } else {
+      runDevice(ptr->obj.dev);
+    }
+    ptr = ptr->next;
+  }
+}
+
+Device makeDeviceFromCircuit(Circuit circuit, char name[]) {
+  DeviceIO inputs = newIO(circuit.inputCount, true, circuit.inputLabels);
+  DeviceIO outputs = newIO(circuit.outputCount, false, circuit.outputLabels);
+  
+  int count = (int)pow(2,circuit.inputCount);
+
+  bool function_outs[circuit.outputCount][count];
+
+  for(int i=0;i<count;i++) {
+    int cur_input = i;
+    for(int j=circuit.inputCount-1;j>=0;j--) {
+      circuit.inputs[j].isActive = (bool)(cur_input & 1);
+      cur_input = cur_input >> 1;
+    }
+    simulateCircuit(&circuit);
+    for(int j=0;j<=circuit.outputCount;j++) {
+      function_outs[j][i] = circuit.outputs[j].isActive;
+    }
+  }
+
+  TruthTable function[circuit.outputCount];
+  for(int i=0;i<circuit.outputCount;i++) {
+    function[i] = newTable(function_outs[i], count);
+  }
+
+  return newDevice(name, inputs, outputs, function);
 }

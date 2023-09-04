@@ -51,7 +51,7 @@ Board newBoard(Device devices[], int devCount, Connection conns[], int numConns)
 void freeBoard(Board board);
 Circuit newCircuit(Gate inputGates[], char inputLabels[], int inputs, Board board, Gate outputGates[], char outputLabels[], int outputs);
 void freeCiruit(Circuit circuit);
-Circuit simulateCircuit(Circuit* circuit); // TODO
-Device makeDeviceFromCircuit(Circuit circuit); // TODO
+void simulateCircuit(Circuit* circuit);
+Device makeDeviceFromCircuit(Circuit circuit, char name[]); // TODO
 
 #endif // !CIRCUIT_H
