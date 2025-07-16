@@ -159,6 +159,8 @@ Device makeDeviceFromCircuit(Circuit circuit, char name[]) {
   int count = (int)pow(2,circuit.inputCount);
 
   bool function_outs[circuit.outputCount][count];
+  
+  formList(&circuit);
 
   for(int i=0;i<count;i++) {
     int cur_input = i;
@@ -166,7 +168,12 @@ Device makeDeviceFromCircuit(Circuit circuit, char name[]) {
       circuit.inputs[j].isActive = (bool)(cur_input & 1);
       cur_input = cur_input >> 1;
     }
+    printf("Set input 0 to %s\n", (circuit.inputs[0].isActive)?"true":"false");
+
     simulateCircuit(&circuit);
+
+    printf("Output 0 set to %s\n", (circuit.outputs[0].isActive)?"true":"false");
+
     for(int j=0;j<=circuit.outputCount;j++) {
       function_outs[j][i] = circuit.outputs[j].isActive;
     }

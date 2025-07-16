@@ -7,9 +7,14 @@ BIN := bin
 
 # Get the source files recursively
 SRCS := $(wildcard src/**/*.c) $(wildcard src/*.c) $(wildcard src/**/**/*.c) $(wildcard src/**/**/**/*.c)
+$(info SRCS is $(SRCS))
+SRCS := $(filter-out $(wildcard src/tests/*), $(SRCS))
+
+$(info SRCS is $(SRCS))
 
 # generate names of object files
 OBJS := $(SRCS:.c=.o)
+$(info OBJS is $(OBJS))
 
 
 # default recipe
@@ -46,7 +51,12 @@ testcircuit:
 	$(BIN)/testcircuit
 	rm $(BIN)/testcircuit
 
-test: testgate testcircuit
+testgateconv:
+	$(CC) -o $(BIN)/testgateconv src/tests/circuit_conv.c src/simulation/device.c src/simulation/circuit.c src/tests/gate_consts.c -lm
+	$(BIN)/testgateconv
+	rm $(BIN)/testgateconv
+
+test: testgate testcircuit testgateconv
 
 # recipe to clean the workspace
 clean:
